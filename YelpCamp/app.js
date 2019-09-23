@@ -72,6 +72,12 @@ mongoose.connect("mongodb://localhost:27017/yelpDB", {useFindAndModify: false, u
 
 seedDB();
 
+//middleware for every route
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.get("/", (req, res) => {
   res.render("landing");
 })
