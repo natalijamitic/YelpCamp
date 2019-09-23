@@ -21,12 +21,12 @@ const data = [
 ]
 
 function seedDB() {
-  Campground.remove(err => {
+  Campground.deleteMany({}, err => {
     if (err) {
       console.log(err);
     } else {
       console.log("removed campgrounds!");
-      Comment.remove(err => {
+      Comment.deleteMany({}, err => {
         if (err) {
           console.log(err);
         } else {

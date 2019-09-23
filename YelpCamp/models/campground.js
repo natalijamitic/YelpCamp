@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const campgroundSchema = {
+const campgroundSchema = new mongoose.Schema({
   name: String,
   image: String,
   description: String,
@@ -10,6 +10,6 @@ const campgroundSchema = {
       ref: "Comment"
     }
   ]
-};
+});
 
 module.exports = mongoose.model("Campground", campgroundSchema);
