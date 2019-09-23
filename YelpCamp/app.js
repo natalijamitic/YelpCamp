@@ -75,7 +75,7 @@ app.use((req, res, next) => {
 });
 
 mongoose.connect("mongodb://localhost:27017/yelpDB", {useFindAndModify: false, useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
-seedDB();
+// seedDB(); //seed the database
 
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
