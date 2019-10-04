@@ -51,6 +51,6 @@ body {
   color: white;
 }
 
-#delete-form {
+.delete-form {
   display: inline;
 }

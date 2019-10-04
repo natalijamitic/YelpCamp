@@ -71,20 +71,16 @@ router.put("/:comment_id", (req, res) => {
   //redirect somewhere
 });
 
-// // DESTROY CAMPGROUND ROUTE
-// router.delete("/:id", checkCampgroundOwnership, (req, res) => {
-//   Campground.findByIdAndRemove(req.params.id, (err, campgroundRemoved) => {
-//     if (err) {
-//       res.redirect("/campgrounds");
-//     } else {
-//       Comment.deleteMany({_id: {$in: campgroundRemoved.comments}}, err => {
-//         if (err) {
-//           console.log(err);
-//         }
-//         res.redirect("/campgrounds");
-//       });
-//     }
-//   });
+// DESTROY COMMENT ROUTE
+router.delete("/:comment_id", (req, res) => {
+  Comment.findByIdAndRemove(req.params.comment_id, err => {
+    if (err) {
+      res.redirect("back");
+    } else {
+      res.redirect("/campgrounds/" + req.params.id);
+    }
+  });
+});
 
 //middleware
 function isLoggedIn(req, res, next) {
