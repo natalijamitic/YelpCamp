@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const User = require("../models/user");
+const middleware = require("../middleware"); //if a dir is required "index.js" is automatically required
 
 //root route
 router.get("/", (req, res) => {
   res.render("landing");
 })
-
 
 //show register form
 router.get("/register", (req, res) => {
@@ -61,14 +61,6 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/campgrounds");
 });
-
-//middleware
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
 
 
 module.exports = router;
