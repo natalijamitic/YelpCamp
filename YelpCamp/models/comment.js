@@ -7,7 +7,7 @@ const commentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
       },
-      username: String
+      displayName: String
     }
 });
 

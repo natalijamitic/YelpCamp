@@ -28,9 +28,9 @@
                 <a class="nav-link" href="/register">Sign Up</a>
               </li>
             <% } else { %>
-              <% if (currentUser.username) {%>
+              <% if (currentUser.displayName) {%>
               <li class="nav-item">
-                <a class="nav-link" href="#">Signed in as <%= currentUser.username %></a>
+                <a class="nav-link disabled" href="#">Signed in as <%= currentUser.displayName %></a>
               </li>
               <% } %>
               <li class="nav-item">
