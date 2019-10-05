@@ -14,11 +14,12 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const methodOverride = require("method-override");
+const flash = require("connect-flash");
 //requiring routes
 const indexRoutes = require("./routes/index");
 const commentRoutes = require("./routes/comments");
 const campgroundRoutes = require("./routes/campgrounds");
-const flash = require("connect-flash");
+
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
+app.locals.moment = require("moment");
 
 // PASSPORT CONFIGURATION
 app.use(session({
