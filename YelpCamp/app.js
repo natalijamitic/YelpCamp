@@ -39,6 +39,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 passport.use(User.createStrategy());
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -48,6 +49,27 @@ passport.deserializeUser((id, done) => {
     done(err, user);
   });
 });
+
+
+
+// passport.use(new localStrategy({
+//     usernameField : 'email',
+//     passwordField : 'password',
+//     passReqToCallback : true
+//   },
+//   (req, username, password, done) => {
+//     User.findOne({email: username}, function(err, user) {
+//         if (err) { return done(err); }
+//         if (!user) {
+//           return done(null, false, { message: 'Incorrect username.' });
+//         }
+//         if (!user.validPassword(password)) {
+//           return done(null, false, { message: 'Incorrect password.' });
+//         }
+//         return done(null, user);
+//     })
+//   })
+// )
 
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
