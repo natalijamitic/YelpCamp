@@ -18,6 +18,7 @@ const methodOverride = require("method-override");
 const indexRoutes = require("./routes/index");
 const commentRoutes = require("./routes/comments");
 const campgroundRoutes = require("./routes/campgrounds");
+const flash = require("connect-flash");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+app.use(flash());
 
 // PASSPORT CONFIGURATION
 app.use(session({
@@ -72,6 +74,8 @@ passport.use(new FacebookStrategy({
 //middleware for every route
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
   next();
 });
 
