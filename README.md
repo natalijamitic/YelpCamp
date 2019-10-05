@@ -9,5 +9,6 @@ Includes:
   - read comments
   - sign up, log in, use Facebook or Google for logging in
   - for users only:
-    - create, edit, delete campground
-    - create, edit, delete comment
+    - create, edit, delete campground (+ time stamp)
+    - create, edit, delete comment (+ time stamp)
+    - reset password via email 
