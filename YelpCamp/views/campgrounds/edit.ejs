@@ -6,7 +6,10 @@
     <div style="width: 30%; margin: 25px auto">
       <form class="" action="/campgrounds/<%= campground._id %>?_method=PUT" method="post">
         <div class="form-group">
-          <input id="campName" class="form-control" type="text" name="campground[name]" value ="<%= campground.name %>">
+          <input id="campName" class="form-control" type="text" name="campground[name]" value="<%= campground.name %>">
+        </div>
+        <div class="form-group">
+          <input id="campPrice" class="form-control" type="number" name="campground[price]" value="<%= campground.price %>" min="0.01" step="0.01">
         </div>
         <div class="form-group">
           <input id="imageURL" class="form-control" type="text" name="campground[image]" value ="<%= campground.image %>">

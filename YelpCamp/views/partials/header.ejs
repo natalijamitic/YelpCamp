@@ -6,6 +6,7 @@
   <title>YelpCamp</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/bootstrap-social.css">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -14,7 +15,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-    <a class="navbar-brand" href="/">YelpCamp</a>
+    <a class="navbar-brand" href="/"><i class="fas fa-campground"></i> YelpCamp</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -46,12 +47,12 @@
 <div class="container">
   <% if(error && error.length > 0) { %>
     <div class="alert alert-danger" role="alert">
-      <h3><%= error %></h3>
+      <h5><%= error %></h5>
     </div>
   <% } %>
   <% if (success && success.length > 0) {%>
     <div class="alert alert-success" role="alert">
-      <h3><%= success %></h3>
+      <h5><%= success %></h5>
     </div>
   <% } %>
 </div>
