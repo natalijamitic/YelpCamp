@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Campground = require("./models/campground");
 const Comment   = require("./models/comment");
 
-const data = [
+const seeds = [
     {
         name: "Cloud's Rest",
         image: "https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg",
@@ -20,44 +20,21 @@ const data = [
     }
 ]
 
-function seedDB() {
-  Campground.deleteMany({}, err => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("removed campgrounds!");
-      Comment.deleteMany({}, err => {
-        if (err) {
-          console.log(err);
-        } else {
-            console.log("removed comments!");
-            data.forEach(seed => {
-              Campground.create(seed, (err, campground) => {
-                if (err) {
-                  console.log(err);
-                } else {
-                  console.log("added a campground");
-                  Comment.create(
-                    {
-                      text: "This place is great, but I wish there was internet",
-                      author: "Homer"
-                    }, (err, comment) => {
-                      if (err) {
-                        console.log(err);
-                      } else {
-                        campground.comments.push(comment);
-                        campground.save();
-                        console.log("Created new comment");
-                      }
-                    }
-                  );
-                }
-              });
-            });
-        }
-      });
-    }
-  });
+async function seedDB() {
+  await Campground.remove({});
+  await Comment.remove({});
+
+  for (const seed of seeds) {
+    let campground = await Campground.create(seed);
+    let comment = await Comment.create(
+      {
+        text: "This place is great, but I wish there was internet",
+        author: "Homer"
+      }
+    );
+    campground.comments.push(comment);
+    campground.save();
+  }
 }
 
 
